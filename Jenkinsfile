@@ -18,11 +18,8 @@ pipeline {
     }
     stage("Packaging Stage"){
       steps {
-         mvnHome = tool 'M3'
-        withEnv(["MVN_HOME=$mvnHome"]) {
-        bat(/"%MVN_HOME%\bin\mvn" package /)
-        }
-       // bat "mvn package"
+
+        bat "mvn package"
       }
     }
   }

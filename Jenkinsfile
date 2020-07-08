@@ -3,17 +3,29 @@ pipeline {
   stages{
     stage("Cleaning Stage"){
       steps {
-        bat "mvn clean"
+                mvnHome = tool 'M3'
+        withEnv(["MVN_HOME=$mvnHome"]) {
+        bat(/"%MVN_HOME%\bin\mvn" clean /)
+        }
+        //bat "mvn clean"
       }
     }
     stage("Testing Stage"){
       steps {
-        bat "mvn test"
+         mvnHome = tool 'M3'
+        withEnv(["MVN_HOME=$mvnHome"]) {
+        bat(/"%MVN_HOME%\bin\mvn" test /)
+        }
+       // bat "mvn test"
       }
     }
     stage("Packaging Stage"){
       steps {
-        bat "mvn package"
+         mvnHome = tool 'M3'
+        withEnv(["MVN_HOME=$mvnHome"]) {
+        bat(/"%MVN_HOME%\bin\mvn" package /)
+        }
+       // bat "mvn package"
       }
     }
   }

@@ -3,10 +3,15 @@ pipeline {
   stages{
     stage("Cleaning Stage"){
       steps {
-         def mvnHome = tool 'M3'
-        withEnv(["MVN_HOME=$mvnHome"]) {
-        bat(/"%MVN_HOME%\bin\mvn" clean /)
-        }
+        
+        def mvn_version = 'M3'
+withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+  bat("mvn clean package")
+}
+       //  def mvnHome = tool 'M3'
+       // withEnv(["MVN_HOME=$mvnHome"]) {
+       // bat(/"%MVN_HOME%\bin\mvn" clean /)
+       // }
         //bat "mvn clean"
       }
     }

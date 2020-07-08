@@ -31,7 +31,7 @@ pipeline {
     }
     stage("Email Build status"){
       steps {
-        mailbody:"${env.JOB_NAME}-Build#${env.BUILD_NUMBER}-${currentBuild.currentResult}\n\ncheck console output at${env.BUILD_URL}to view the results.", to:'chhaya.agarwal@gmail.com'
+        mailbody:"${env.JOB_NAME}-Build#${env.BUILD_NUMBER}-${currentBuild.currentResult}\n\ncheck console output at${env.BUILD_URL}to view the results.", subject:'test', to:'chhaya.agarwal@gmail.com'
       }
     }
     
